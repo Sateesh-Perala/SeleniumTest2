@@ -31,7 +31,7 @@ public class TestClass {
 	public void launchDriver() {
 	
 		String driverpath="/usr/bin/google-chrome-stable";
-	System.setProperty("webdriver.chrome.driver", "driverpath");
+	System.setProperty("webdriver.chrome.driver", driverpath);
 		// WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless");
