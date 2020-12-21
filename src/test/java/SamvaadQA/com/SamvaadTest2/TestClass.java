@@ -30,7 +30,7 @@ public class TestClass {
 	@BeforeMethod
 	public void launchDriver() {
 	
-		String driverpath="/usr/bin/google-chrome";
+		String driverpath="//usr/bin/google-chrome";
 	System.setProperty("webdriver.chrome.driver", driverpath);
 		// WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
@@ -47,7 +47,7 @@ public class TestClass {
 		
 //	System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
  //		WebDriverManager.chromedriver().setup();
-		String driverpath="/usr/bin/google-chrome";
+		String driverpath="//usr/bin/google-chrome";
 		System.setProperty("webdriver.chrome.driver", driverpath);
 	ChromeOptions options = new ChromeOptions();
 	options.addArguments("--headless");
