@@ -21,15 +21,21 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class TestClass {
 
 	public static WebDriver driver;
 
 	@BeforeMethod
 	public void launchDriver() {
-		
-		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
-		driver = new ChromeDriver();
+	
+		String driverpath="/usr/bin/google-chrome-stable";
+	System.setProperty("webdriver.chrome.driver", "driverpath");
+		// WebDriverManager.chromedriver().setup();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless");
+		driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.close();
@@ -39,8 +45,12 @@ public class TestClass {
 	public void loginTest() { // Test2: Entering Username and password and click on sign in button
 		
 		
-		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
-		ChromeOptions options = new ChromeOptions();
+	System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
+ //		WebDriverManager.chromedriver().setup();
+	ChromeOptions options = new ChromeOptions();
+	options.addArguments("--headless");
+	driver = new ChromeDriver(options);
+		//ChromeOptions options = new ChromeOptions();
 		options.addArguments("--use-fake-ui-for-media-stream");// allowing the microphone alert window
 		driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
