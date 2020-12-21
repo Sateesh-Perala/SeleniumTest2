@@ -30,7 +30,7 @@ public class TestClass {
 	@BeforeMethod
 	public void launchDriver() {
 	
-		String driverpath="/usr/bin/google-chrome-stable";
+		String driverpath="/usr/bin/google-chrome";
 	System.setProperty("webdriver.chrome.driver", driverpath);
 		// WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
