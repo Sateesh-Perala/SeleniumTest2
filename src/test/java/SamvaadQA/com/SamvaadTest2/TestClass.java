@@ -45,8 +45,10 @@ public class TestClass {
 	public void loginTest() { // Test2: Entering Username and password and click on sign in button
 		
 		
-	System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
+//	System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
  //		WebDriverManager.chromedriver().setup();
+		String driverpath="/usr/bin/google-chrome";
+		System.setProperty("webdriver.chrome.driver", driverpath);
 	ChromeOptions options = new ChromeOptions();
 	options.addArguments("--headless");
 	driver = new ChromeDriver(options);
