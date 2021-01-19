@@ -37,11 +37,11 @@ public class TestClass {
 		
 		
 	//		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
-		//	WebDriverManager.chromedriver().setup();
+			WebDriverManager.chromedriver().setup();
 	// 		String driverpath="//usr/bin/google-chrome";
 		
-		String driverpath="C:\\chromedriver_win32\\chromedriver.exe";
-		System.setProperty("webdriver.chrome.driver", driverpath);
+		//String driverpath="C:\\chromedriver_win32\\chromedriver.exe";
+		//System.setProperty("webdriver.chrome.driver", driverpath);
 		ChromeOptions options = new ChromeOptions();
 		//options.setHeadless(true);
 		//options.addArguments("--head");
