@@ -41,9 +41,9 @@ public class TestClass {
 	// 		String driverpath="//usr/bin/google-chrome";
 		
 		String driverpath="C:\\chromedriver_win32\\chromedriver.exe";
-	System.setProperty("webdriver.chrome.driver", driverpath);
+		System.setProperty("webdriver.chrome.driver", driverpath);
 		ChromeOptions options = new ChromeOptions();
-		options.setHeadless(true);
+		//options.setHeadless(true);
 		//options.addArguments("--head");
 		driver = new ChromeDriver(options);
 		//ChromeOptions options = new ChromeOptions();
@@ -57,7 +57,7 @@ public class TestClass {
 		
 		String new1 = driver.getWindowHandle();
 		driver.switchTo().window(new1);
-		driver.findElement(By.id("username")).sendKeys("srtesting1996@gmail.com");
+		driver.findElement(By.id("username")).sendKeys("testing@gmail.com");
 		driver.findElement(By.name("pass")).sendKeys("SamvaadQa@321");
 		driver.findElement(By.xpath("/html/body/app-root/app-login/div[1]/div/div/form/div[3]/div[2]/div/button")).click();
 
@@ -67,7 +67,7 @@ public class TestClass {
 	
 		String new3 = driver.getWindowHandle();
 		driver.switchTo().window(new3);
-		driver.findElement(By.xpath("//*[@id=\"myModal\"]/div/div/form/div[1]/form/div/div[1]/div[2]/input")).sendKeys("Session3");
+		driver.findElement(By.xpath("//*[@id=\"myModal\"]/div/div/form/div[1]/form/div/div[1]/div[2]/input")).sendKeys("Session1");
 		
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
