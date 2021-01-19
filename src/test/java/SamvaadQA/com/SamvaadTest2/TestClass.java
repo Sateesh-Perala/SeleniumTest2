@@ -44,7 +44,7 @@ public class TestClass {
 		//System.setProperty("webdriver.chrome.driver", driverpath);
 		ChromeOptions options = new ChromeOptions();
 		//options.setHeadless(true);
-		 options.addArguments("--head");
+		 options.addArguments("head-less-mode");
 		driver = new ChromeDriver(options);
 		//ChromeOptions options = new ChromeOptions();
 		options.addArguments("use-fake-ui-for-media-stream");// allowing the microphone alert window
