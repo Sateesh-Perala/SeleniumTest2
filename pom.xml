@@ -62,7 +62,7 @@
 					<source>1.7</source>
 					<target>1.7</target>
 					<suiteXmlFiles>
-						<suiteXmlFile>testNG.xml</suiteXmlFile>
+						<suiteXmlFile>testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
