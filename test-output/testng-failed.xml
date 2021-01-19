@@ -5,8 +5,8 @@
     <classes>
       <class name="SamvaadQA.com.SamvaadTest2.TestClass">
         <methods>
-          <include name="startMeeting_Test"/>
-          <include name="lanuchDriver"/>
+          <include name="loginTest"/>
+          <include name="loginTest"/>
         </methods>
       </class> <!-- SamvaadQA.com.SamvaadTest2.TestClass -->
     </classes>

@@ -1,5 +1,10 @@
 package SamvaadQA.com.SamvaadTest2;
 
+import java.awt.HeadlessException;
+import java.awt.Toolkit;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
@@ -27,36 +32,25 @@ public class TestClass {
 
 	public static WebDriver driver;
 
-	@BeforeMethod
-	public void launchDriver() {
-	
-		String driverpath="//usr/bin/google-chrome";
-	System.setProperty("webdriver.chrome.driver", driverpath);
-		// WebDriverManager.chromedriver().setup();
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless");
-		driver = new ChromeDriver(options);
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.close();
-	}
-
 	@Test
-	public void loginTest() { // Test2: Entering Username and password and click on sign in button
+	public void loginTest() throws HeadlessException, UnsupportedFlavorException, IOException { // Test2: Entering Username and password and click on sign in button
 		
 		
-//	System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
- //		WebDriverManager.chromedriver().setup();
-		String driverpath="//usr/bin/google-chrome";
-		System.setProperty("webdriver.chrome.driver", driverpath);
-	ChromeOptions options = new ChromeOptions();
-	options.addArguments("--headless");
-	driver = new ChromeDriver(options);
+	//		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
+		//	WebDriverManager.chromedriver().setup();
+	// 		String driverpath="//usr/bin/google-chrome";
+		
+		String driverpath="C:\\chromedriver_win32\\chromedriver.exe";
+	System.setProperty("webdriver.chrome.driver", driverpath);
+		ChromeOptions options = new ChromeOptions();
+		options.setHeadless(true);
+		//options.addArguments("--head");
+		driver = new ChromeDriver(options);
 		//ChromeOptions options = new ChromeOptions();
-		options.addArguments("--use-fake-ui-for-media-stream");// allowing the microphone alert window
+		options.addArguments("use-fake-ui-for-media-stream");// allowing the microphone alert window
 		driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
-		
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		driver.get("http://qa.dhanushsamvaad.com/");
 		driver.manage().window().maximize();
@@ -69,15 +63,13 @@ public class TestClass {
 
 		String new2 = driver.getWindowHandle();
 		driver.switchTo().window(new2);
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.findElement(By.xpath("/html/body/app-root/app-schedule/section/div/div/div/div/div[2]/div/form/div/div[4]/button[2]")).click();
 	
 		String new3 = driver.getWindowHandle();
 		driver.switchTo().window(new3);
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.findElement(By.xpath("//*[@id=\"myModal\"]/div/div/form/div[1]/form/div/div[1]/div[2]/input")).sendKeys("Session3");
 		
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		WebElement element = driver.findElement(By.xpath("//*[@id=\"myModal\"]/div/div/form/div[2]/button[2]"));
 		js.executeScript("arguments[0].scrollIntoView();", element);
@@ -89,25 +81,89 @@ public class TestClass {
 	
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));
-		
-		//driver.findElement(By.id("username")).sendKeys("testing1");
+		driver.findElement(By.id("username")).clear();
+		driver.findElement(By.id("username")).sendKeys("Madhukar");
 		driver.findElement(By.xpath("/html/body/app-root/app-video-room/div[1]/div/div/form/div[3]/div[2]/div/button")).click();
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
 		
 		String new4 = driver.getWindowHandle();
 		driver.switchTo().window(new4);
-		
-		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		String new5 = driver.getWindowHandle();
 		driver.switchTo().window(new5);
+
+		driver.findElement(By.cssSelector(".icon--2q1XXw.icon-bbb-mute")).click();
+		// driver.findElement((By.xpath("//button[@class='lg--Q7ufB buttonWrapper--x8uow button--295UAi']"))).click();
+	
+		
+		driver.findElement(By.cssSelector(".icon--2q1XXw.icon-bbb-video_off")).click();
 		
 	
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		
+		driver.switchTo().window(new3);
+	
+	
+		driver.findElement(By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[9]/button[1]")).click(); //text copied to clipboard
+		String myText = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor); // extracting the text that was copied to the clipboard
+		driver=new ChromeDriver(options);
+		options.addArguments("use-fake-ui-for-media-stream");
+		driver.get(myText);
+		driver.manage().window().maximize();
+		
+		String new11 = driver.getWindowHandle();
+		driver.switchTo().window(new11);
+		
+		driver.findElement(By.id("username")).sendKeys("Sateesh");
+		driver.findElement(By.id("email")).sendKeys("sateesh.perala@dhanushinfotech.net");
+		driver.findElement(By.id("mobile")).sendKeys("9966589549");
+		driver.findElement(By.id("occupation")).sendKeys("Devops Engineer");
+		driver.findElement(By.id("location")).sendKeys("Hyderabad");
+		driver.findElement(By.xpath("/html/body/app-root/app-video-room/div[1]/div/div/form/div[5]/div[2]/div/button")).click();
+
+		
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		
+	
+		driver= new ChromeDriver(options);
+		options.addArguments("use-fake-ui-for-media-stream");
+		driver.get(myText);
+		driver.manage().window().maximize();
+		
+		String new12 = driver.getWindowHandle();
+		driver.switchTo().window(new12);
+		
+		
+		driver.findElement(By.id("username")).sendKeys("Akhil");
+		driver.findElement(By.id("email")).sendKeys("akhil.akshanthala@dhanushinfotech.net");
+		driver.findElement(By.id("mobile")).sendKeys("9948449398");
+		driver.findElement(By.id("occupation")).sendKeys("Devops Engineer");
+		driver.findElement(By.id("location")).sendKeys("Hyderabad");
+		driver.findElement(By.xpath("/html/body/app-root/app-video-room/div[1]/div/div/form/div[5]/div[2]/div/button")).click();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		
+		
+			driver= new ChromeDriver(options);
+			options.addArguments("use-fake-ui-for-media-stream");
+			driver.get(myText);
+			driver.manage().window().maximize();
+			
+			String new13 = driver.getWindowHandle();
+			driver.switchTo().window(new13);
+			
+			
+			driver.findElement(By.id("username")).sendKeys("Prashanth");
+			driver.findElement(By.id("email")).sendKeys("akhil.akshanthala@dhanushinfotech.net");
+			driver.findElement(By.id("mobile")).sendKeys("9948449398");
+			driver.findElement(By.id("occupation")).sendKeys("Devops Engineer");
+			driver.findElement(By.id("location")).sendKeys("Hyderabad");
+			driver.findElement(By.xpath("/html/body/app-root/app-video-room/div[1]/div/div/form/div[5]/div[2]/div/button")).click();
 		
 	}	
 		
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, HeadlessException, UnsupportedFlavorException, IOException{
 		TestClass t = new TestClass();
-		t.launchDriver();
+		//	t.launchDriver();
 		t.loginTest();
+		
 	}
 }
