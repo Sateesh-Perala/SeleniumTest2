@@ -21,5 +21,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/satee/Downloads/selenium-server-standalone-3.141.59.jar"/>
 	<classpathentry kind="lib" path="C:/Users/satee/Downloads/jar_files/testng-7.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/satee/Downloads/slf4j-api-1.8.0-alpha0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

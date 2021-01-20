@@ -1,5 +1,6 @@
 package SamvaadQA.com.SamvaadTest2;
-
+//import org.apache.log4j.PropertyConfigurator;
+//import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
@@ -40,8 +41,8 @@ public class TestClass {
 		WebDriverManager.chromedriver().setup();
 	// 		String driverpath="//usr/bin/google-chrome";
 		
-		String driverpath="C:\\chromedriver_win32\\chromedriver.exe";
-		System.setProperty("webdriver.chrome.driver", driverpath);
+	//	String driverpath="C:\\chromedriver_win32\\chromedriver.exe";
+	//	System.setProperty("webdriver.chrome.driver", driverpath);
 		ChromeOptions options = new ChromeOptions();
 		//options.setHeadless(true);
 		//options.addArguments("head-less-mode");
@@ -50,7 +51,7 @@ public class TestClass {
 		options.addArguments("use-fake-ui-for-media-stream");// allowing the microphone alert window
 		driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		
 		driver.get("http://qa.dhanushsamvaad.com/");
 		driver.manage().window().maximize();
